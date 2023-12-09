@@ -1,0 +1,4 @@
+*.html
+*.csv
+lemans24-data.sql
+!results_in.csv
