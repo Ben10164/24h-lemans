@@ -68,11 +68,10 @@ CREATE TABLE IF NOT EXISTS Car (
 
 -- CarNumber table
 CREATE TABLE IF NOT EXISTS CarNumber (
-    id INT NOT NULL AUTO_INCREMENT,
     race_id INT NOT NULL,
+    car_number VARCHAR(3),
     car_id INT,
-    car_number VARCHAR(3) NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (race_id, car_number),
     FOREIGN KEY (race_id) REFERENCES Race(id),
     FOREIGN KEY (car_id) REFERENCES Car(id)
 );
@@ -83,18 +82,18 @@ CREATE TABLE IF NOT EXISTS CarNumber (
 
 -- Result table
 CREATE TABLE IF NOT EXISTS Result (
-    id INT NOT NULL AUTO_INCREMENT,
+    -- id INT NOT NULL AUTO_INCREMENT,
     race_id INT NOT NULL,
-    car_id INT NOT NULL,
+    car_number VARCHAR(3),
     pos VARCHAR(3) NOT NULL,
     laps INT,
     -- format used by the data [DECIMAL(8, 3)]
     distance DECIMAL(8, 3) NULL, 
     racing_time TIME,
     retirement_reason VARCHAR(128) NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (race_id) REFERENCES Race(id),
-    FOREIGN KEY (car_id) REFERENCES CarNumber(id)
+    -- PRIMARY KEY (id),
+    PRIMARY KEY (race_id, car_number),
+    FOREIGN KEY (race_id, car_number) REFERENCES CarNumber(race_id, car_number)
 );
 
 /*markdown
@@ -151,7 +150,7 @@ CREATE TABLE IF NOT EXISTS CarTyre (
     car_id INT NOT NULL,
     tyre_id CHAR(2) NOT NULL,
     PRIMARY KEY (car_id, tyre_id),
-    FOREIGN KEY (car_id) REFERENCES CarNumber(id),
+    FOREIGN KEY (car_id) REFERENCES CarNumber(car_id),
     FOREIGN KEY (tyre_id) REFERENCES Tyre(id)
 );
 
@@ -162,11 +161,13 @@ CREATE TABLE IF NOT EXISTS CarTyre (
 -- DriverResult table
 CREATE TABLE IF NOT EXISTS DriverResult(
     driver_id INT NOT NULL,
-    result_id INT NOT NULL,
+    -- result_id INT NOT NULL,
+    race_id INT NOT NULL,
+    car_number VARCHAR(3),
     driver_order INT,
-    PRIMARY KEY (driver_id, result_id),
+    PRIMARY KEY (driver_id, race_id, car_number),
     FOREIGN KEY (driver_id) REFERENCES Driver(id),
-    FOREIGN KEY (result_id) REFERENCES Result(id)
+    FOREIGN KEY (race_id, car_number) REFERENCES Result(race_id, car_number)
 );
 
 -- Drop the procedure if it already exists
@@ -330,18 +331,18 @@ BEGIN
       SET new_car_id = NULL;
     END IF;
 
-    INSERT INTO CarNumber (race_id, car_id, car_number)
-    VALUES (res_race_yr, new_car_id, res_car_nbr);
+    INSERT IGNORE INTO CarNumber (race_id, car_number, car_id)
+    VALUES (res_race_yr, res_car_nbr, new_car_id);
 
     SET new_carnb_id = LAST_INSERT_ID();
                  /* Create result */
-            INSERT INTO Result (race_id, car_id, pos, laps, distance, racing_time, retirement_reason)
-            VALUES (res_race_yr, new_car_id, res_pos, res_laps, res_distance, res_racing_time, res_reason);
+            INSERT IGNORE INTO Result (race_id, car_number, pos, laps, distance, racing_time, retirement_reason)
+            VALUES (res_race_yr, res_car_nbr, res_pos, res_laps, res_distance, res_racing_time, res_reason);
 
                 SET new_res_id = LAST_INSERT_ID();
                 IF new_driver_id IS NOT NULL AND new_res_id IS NOT NULL THEN
-                    INSERT INTO DriverResult (driver_id, result_id, driver_order)
-                    VALUES (new_driver_id, new_res_id, new_drv_ord);
+                    INSERT IGNORE INTO DriverResult (driver_id, race_id, car_number, driver_order)
+                    VALUES (new_driver_id, res_race_yr, res_car_nbr, new_drv_ord);
                 END IF;
 
                 IF NOT INSTR(res_drivers_name, '|') THEN
