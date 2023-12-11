@@ -4,34 +4,74 @@ import subprocess
 import streamlit as st
 
 
-def delete_html_files():
-    folder_path = os.getcwd()  # Get the current working directory
-    html_files = [file for file in os.listdir(folder_path) if file.endswith(".html")]
+# Initialize connection.
+conn = st.connection("mysql", type="sql")
 
-    for file in html_files:
-        file_path = os.path.join(folder_path, file)
-        os.remove(file_path)
+# pos. car_number, laps, distance, racing_time, retirement_reasons
 
-    st.success("HTML files deleted successfully!")
+years = conn.query("SELECT * from race")
+race_year = st.selectbox("Race year", options=years, index=len(years) - 1)
+
+# Perform query.
+race_results = conn.query(
+    f"""
+    SELECT pos, car_number, laps, distance, racing_time, retirement_reason
+    FROM Result
+    WHERE race_id = {race_year}
+        AND pos NOT IN ('RES', 'DNA', 'DNS', 'DNQ', 'DNP')
+    ORDER BY
+        CASE
+            WHEN pos = 'NC' THEN 100 -- Finished the race, but was not officially classified (multiple reasons, but most common is that the race ended before they did enough laps)
+            WHEN pos = 'DNF' THEN 150 -- Didn't finish the race
+            WHEN pos = 'DSQ' THEN 200 -- Disqualification
+            ELSE CAST(pos AS SIGNED)
+        END,
+        pos ASC,
+        distance DESC;
+    """,
+    ttl=600,
+)
+# Print results.
+st.write("Results for the", race_year, "race.")
+st.write(race_results.set_index("pos"))
+
+st.markdown(
+"""
+#### Term Glossary
+
+* DNF
+  * *Did not finish.*
+  * Commonly attributed to some sort of mechanical failure or racing incident. The car did not cross the finish line following the 24-hour time being satisfied to conclude the race.
 
 
-def download_html_files():
-    folder_path = os.getcwd()  # Get the current working directory
-    sh_file_path = os.path.join(
-        folder_path, "data/get_pages.sh"
-    ) 
+* NC
+  * *Not Classified.*
+  * Although the participant may have completed the race, they are not classified in the official results. This designation is often assigned for reasons such as rule infractions, technical violations, or circumstances preventing inclusion in the final standings.
 
-    if os.path.exists(sh_file_path):
-        subprocess.run(["/bin/bash", sh_file_path])
-        st.success("Download pages script executed successfully!")
-    else:
-        st.error("Shell script not found in the current directory.")
+* DSQ
+  * *Disqualified.*
+  * The participant or team has been disqualified from the race, usually due to a breach of regulations, rule violations, or other infractions.
 
+The following are omitted from the specific results table shown above
 
-# Button to call the specific shell script
-if st.button("Call Shell Script"):
-    download_html_files()
+* DNS
+  * *Did not start.*
+  * The participant or team did not start the race. This could be due to technical issues, driver-related reasons, or other factors preventing the commencement of the race.
 
-# Button to delete HTML files
-if st.button("Delete HTML Files"):
-    delete_html_files()
+* DNA
+  * *Did not arrive.*
+  * The participant or team did not arrive at the event location, resulting in their absence from the race.
+
+* DNP
+  * *Did not participate.*
+  * The participant or team did not take part in the race for various reasons, such as withdrawal, logistical issues, or strategic decisions.
+
+* DNQ
+  * *Did not qualify.*
+  * The participant or team did not qualify for the race, often due to slower lap times during the qualifying sessions.
+
+* RES
+  * *Reserve.*
+  * Typically, used to designate a reserve or backup participant who may replace an original entrant if needed. In race results, it might indicate that the participant is a substitute.
+"""
+)
