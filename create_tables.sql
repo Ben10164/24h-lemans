@@ -9,10 +9,6 @@ DROP TABLE IF EXISTS CarClass;
 DROP TABLE IF EXISTS Race;
 DROP TABLE IF EXISTS Driver;
 
-/*markdown
-# Driver
-*/
-
 -- Driver table
 CREATE TABLE IF NOT EXISTS Driver (
     id INT NOT NULL AUTO_INCREMENT,
@@ -20,10 +16,6 @@ CREATE TABLE IF NOT EXISTS Driver (
     country CHAR(4),
     PRIMARY KEY (id)
 );
-
-/*markdown
-# Race
-*/
 
 -- Race table
 CREATE TABLE IF NOT EXISTS Race (
@@ -37,20 +29,12 @@ INSERT INTO Race(id)
 SELECT distinct race_yr
 FROM results_in;
 
-/*markdown
-# CarClass
-*/
-
 -- CarClass table
 CREATE TABLE IF NOT EXISTS CarClass(
     id VARCHAR(50) NOT NULL,
     class_desc VARCHAR(50),
     PRIMARY KEY (id)
 );
-
-/*markdown
-# Car
-*/
 
 -- Car table
 CREATE TABLE IF NOT EXISTS Car (
@@ -62,10 +46,6 @@ CREATE TABLE IF NOT EXISTS Car (
     FOREIGN KEY (car_class_id) REFERENCES CarClass(id)
 );
 
-/*markdown
-# CarNumber
-*/
-
 -- CarNumber table
 CREATE TABLE IF NOT EXISTS CarNumber (
     race_id INT NOT NULL,
@@ -75,10 +55,6 @@ CREATE TABLE IF NOT EXISTS CarNumber (
     FOREIGN KEY (race_id) REFERENCES Race(id),
     FOREIGN KEY (car_id) REFERENCES Car(id)
 );
-
-/*markdown
-# Result
-*/
 
 -- Result table
 CREATE TABLE IF NOT EXISTS Result (
@@ -95,10 +71,6 @@ CREATE TABLE IF NOT EXISTS Result (
     PRIMARY KEY (race_id, car_number),
     FOREIGN KEY (race_id, car_number) REFERENCES CarNumber(race_id, car_number)
 );
-
-/*markdown
-# Team
-*/
 
 -- Team table
 CREATE TABLE IF NOT EXISTS Team (
@@ -141,10 +113,6 @@ VALUES
     ('R', 'Rapson'),
     ('Y', 'Yokohama');
 
-/*markdown
-# CarTyre
-*/
-
 -- CarTyre table
 CREATE TABLE IF NOT EXISTS CarTyre (
     car_id INT NOT NULL,
@@ -153,10 +121,6 @@ CREATE TABLE IF NOT EXISTS CarTyre (
     FOREIGN KEY (car_id) REFERENCES CarNumber(car_id),
     FOREIGN KEY (tyre_id) REFERENCES Tyre(id)
 );
-
-/*markdown
-# DriverResult
-*/
 
 -- DriverResult table
 CREATE TABLE IF NOT EXISTS DriverResult(
