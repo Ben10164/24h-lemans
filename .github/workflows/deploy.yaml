@@ -13,9 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Google App Engine
+        id: gae
         uses: google-github-actions/deploy-appengine@v0.4.0
         with:
           project_id: le-mans-407917
           version: main
           credentials: ${{secrets.GOOGLE_APP_ENGINE_KEY}}
           deliverables: app.yaml
+      - name: Deployed Site
+        run: echo ${{steps.gae.outputs.url}}
+    
