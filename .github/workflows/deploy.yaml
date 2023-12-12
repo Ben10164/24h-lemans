@@ -18,5 +18,4 @@ jobs:
           project_id: le-mans-407917
           version: main
           credentials: ${{secrets.GOOGLE_APP_ENGINE_KEY}}
-          flags: --no-cache
           deliverables: app.yaml
