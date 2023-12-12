@@ -22,3 +22,5 @@ st.markdown(
 st.markdown("### Pages\n(Click the button to go to that specific page)")
 utils.switch_page_button("History", "History")
 utils.switch_page_button("Race Results", "Race_Results")
+utils.switch_page_button("Winners", "Winners")
+utils.switch_page_button("Drivers", "Drivers")

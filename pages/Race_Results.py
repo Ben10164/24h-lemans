@@ -16,13 +16,13 @@ conn = st.connection("mysql", type="sql")
 
 # pos. car_number, laps, distance, racing_time, retirement_reasons
 
-years = conn.query("SELECT * from race")
+years = conn.query("SELECT * from Race")
 race_year = st.selectbox("Race year", options=years, index=len(years) - 1)
 
 # Perform query.
 race_results = conn.query(
     f"""
-    SELECT pos, car_number, laps, distance, racing_time, retirement_reason
+    SELECT pos AS Result, car_number AS 'Car Number', laps AS 'Laps Completed', distance AS 'Distance Completed', racing_time AS 'Time Completed', retirement_reason AS 'Retirement Reason'
     FROM Result
     WHERE race_id = {race_year}
         AND pos NOT IN ('RES', 'DNA', 'DNS', 'DNQ', 'DNP')
@@ -40,7 +40,7 @@ race_results = conn.query(
 )
 # Print results.
 st.write("Results for the", race_year, "race.")
-st.dataframe(race_results.set_index("pos"), use_container_width= True)
+st.dataframe(race_results.set_index("Result"), use_container_width= True)
 
 st.markdown(
 """

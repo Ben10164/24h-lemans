@@ -20,8 +20,7 @@ CREATE TABLE IF NOT EXISTS Driver (
 
 -- Race table
 CREATE TABLE IF NOT EXISTS Race (
-    id INT,
-    -- race_yr INT NOT NULL,
+    id YEAR,
     PRIMARY KEY (id)
 );
 
@@ -44,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Car (
 
 -- CarNumber table
 CREATE TABLE IF NOT EXISTS CarNumber (
-    race_id INT NOT NULL,
+    race_id YEAR NOT NULL,
     car_number VARCHAR(3),
     car_id INT,
     PRIMARY KEY (race_id, car_number),
@@ -54,7 +53,7 @@ CREATE TABLE IF NOT EXISTS CarNumber (
 
 -- Result table
 CREATE TABLE IF NOT EXISTS Result (
-    race_id INT NOT NULL,
+    race_id YEAR NOT NULL,
     car_number VARCHAR(3),
     pos VARCHAR(3) NOT NULL,
     laps INT,
@@ -94,7 +93,7 @@ CREATE TABLE IF NOT EXISTS CarTyre (
 CREATE TABLE IF NOT EXISTS DriverResult(
     driver_id INT NOT NULL,
     -- result_id INT NOT NULL,
-    race_id INT NOT NULL,
+    race_id YEAR NOT NULL,
     car_number VARCHAR(3),
     driver_order INT,
     team_name VARCHAR(100),
@@ -105,7 +104,7 @@ CREATE TABLE IF NOT EXISTS DriverResult(
 
 CREATE TABLE IF NOT EXISTS TeamResult(
     team_name VARCHAR(100),
-    race_id INT NOT NULL, 
+    race_id YEAR NOT NULL, 
     car_number VARCHAR(3),
     ord_num INT,
     PRIMARY KEY(team_name, race_id, car_number),

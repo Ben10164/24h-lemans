@@ -25,8 +25,9 @@ The first race attracted a diverse array of entries, reflecting the spirit of in
 The inaugural winners, André Lagache and René Léonard, piloted a Chenard et Walcker, a French make that embodied the spirit of the event. The race's initial years witnessed a mix of French and British manufacturers dominating the field, including Bentley, Sunbeam, and Lorraine-Dietrich."""
 )
 st.image(
-    "images/Deux_Bugatti_(à_G),_29_Max_de_Pourtalès-_Sosthène_de_La_Rochefoucault_(10e)_et_28_René_Marie-Louis_Pichard,_et_(à_D)_la_Montier_Special_19_de_Charles_Montier_et_Albert_Ouriou.jpg",
-    caption="Lineup of cars at the inaugural race in 1923. Left to right: The #29 Bugatti of de Pourtalès and de la Rochefoucauld; the #28 Bugatti of Pichard and Marie; and the #19 Montier-Ford Special of Montier and Ouriou. Picture by Agence Rol, a French photo agency.",
+    "images/image1.jpg",
+    # "images/Deux_Bugatti_(à_G),_29_Max_de_Pourtalès-_Sosthène_de_La_Rochefoucault_(10e)_et_28_René_Marie-Louis_Pichard,_et_(à_D)_la_Montier_Special_19_de_Charles_Montier_et_Albert_Ouriou.jpg",
+    caption="Lineup of cars at the inaugural race in 1923. Left to right: The #29 Bugatti of de Pourtalès and de la Rochefoucauld; the #28 Bugatti of Pichard and Marie; and the #19 Montier-Ford Special of Montier and Ouriou. I wonder if they had any idea just how iconic of a race this would soon become. Picture by Agence Rol, a French photo agency.",
 )
 
 st.markdown(
@@ -45,7 +46,7 @@ The post-war period laid the foundation for the intense rivalries and technologi
 
 st.image(
     "images/1950_Cadillac_at_LeMans.jpg",
-    caption="Briggs Cunningham raced two Cadillacs at LeMans in 1950. Picture taken by John Lloyd",
+    caption="The number 2 Cadillac raced by Briggs Cunningham at LeMans in 1950 going underneath the Dunlop bridge. I can't believe that people used to be able to stand on top of the bridge during races FOR FREE! Picture taken by John Lloyd.",
 )
 
 st.markdown(
@@ -70,7 +71,7 @@ Although outside the traditional 1950s-1970s timeline, it's essential to mention
 
 st.image(
     "images/Le_Mans-120121-0073FP.jpg",
-    "The 1991 Le Man winner Mazda 787B exiting the Ford Chicanes [I'm 99% sure thats where the photo was taken]. This is the first Japanese car to win the 24 Hours of Le Mans.",
+    "The 1991 Le Man winner Mazda 787B exiting what I believe to be the Ford Chicane, turns 18 through 21 (47.9468° N, 0.2088° E). I actually pulled up a map of the 1990-2001 layout because I was curious where the photographer was standing. This is the first Japanese car to win the 24 Hours of Le Mans. Picture taken by JPRoche~commonswiki",
 )
 
 st.markdown(
@@ -82,20 +83,20 @@ Entering the 21st century, Audi ushered in a new era of dominance at Le Mans. In
 )
 st.image(
     "images/Audi_wins_LM_2014.jpg",
-    caption="The No. 2 and No. 1 Audi R18 e-tron quattros cross the finish line to win the 2014 24 Hours of Le Mans. Picture taken by Curt Smith.",
+    caption="The No. 2 and No. 1 Audi R18 e-tron quattros cross the finish line to win the 2014 24 Hours of Le Mans. Funny story, I've actually seen that Number 2 car in person. I took a wrong turn on my way through Redmond and drove past a Microsoft building that had it on display. I immediately pulled over because I thought I was hallucinating, but nope, it was right there! If it wasn't at night time and the walls being all windows, I probably would have missed it. Picture taken by Curt Smith.",
 )
 
 st.markdown(
     """
 ### The Centennial Race (2023)
-For the 100th race, Ferrari ended its absence of racing in the top class for 50 years at Le Mans with a fairytail win in 2023. Up against Toyota Gazoo Racing, a team who had won the previous 5 Le Mans, Ferrari stunned the world by qualifying 1st and 2nd. What followed was an action packed 24 hours, heralded as the start of the next great era in motoracing. After the number 50 Ferrari suffered a leak in the front-right brake radiator, the number 51 Ferrari and number 8 Toyota battled for hours on the same pit strategy. Suffering from a communications system failure, the number 51 Ferrari lost the lead in the final hours the number 8 Toyota due to a malfunction in the system reboot process. After struggling for every extra millisecond he could get, Alessandro Pier Guidi made the move to overtake the Toyota, resulting in Ferrari's first Le Mans win since 1965.
+For the 100th year race, Ferrari ended its absence of racing in the top class for 50 years at Le Mans with a fairytail win in 2023. Up against Toyota Gazoo Racing, a team who had won the previous 5 Le Mans, Ferrari stunned the world by qualifying 1st and 2nd. What followed was an action packed 24 hours, heralded as the start of the next great era in motoracing. After the number 50 Ferrari suffered a leak in the front-right brake radiator, the number 51 Ferrari and number 8 Toyota battled for hours on the same pit strategy. Suffering from a communications system failure, the number 51 Ferrari lost the lead in the final hours the number 8 Toyota due to a malfunction in the system reboot process. After struggling for every extra millisecond he could get, Alessandro Pier Guidi made the move to overtake the Toyota, resulting in Ferrari's first Le Mans win since 1965. I HIGHLY recommend watching a race recap or if you're really interested the full 24 hours of racing for free on YouTube.
             """
 )
 
 # The next era
 st.image(
     "images/Ferrari_499P_-_Hybrid,_2023.jpg",
-    caption="Race winning car number Ferrari 499P - Hybrid during the 24 hours of Le Mans driven by Alessandro Pier Guidi, James Calado and Antonio Giovinazzi. Picture taken by Wolkenjaeger~commonswiki.",
+    caption="Race winning car number Ferrari 499P - Hybrid during the 24 hours of Le Mans driven by Alessandro Pier Guidi, James Calado and Antonio Giovinazzi. I can't stress enough how incredible this race was. Picture taken by Wolkenjaeger~commonswiki.",
 )
 
 st.markdown("### \"The next golden era of motorsports racing\"")
