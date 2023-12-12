@@ -1,0 +1,4 @@
+# used for google app engine
+runtime: custom
+env: flex
+# entrypoint: streamlit run Home.py --server.enableCORS false --browser.serverAddress 0.0.0.0 --browser.gatherUsageStats false --server.port 8080

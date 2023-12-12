@@ -5,7 +5,7 @@
 ### Docker
 
 * `docker build -t streamlit .`
-* `docker run -p 8501:8501 streamlit`
+* `docker run -p 8080:8080 streamlit`
 * That should be it!
 
 ### Manual
@@ -19,7 +19,7 @@
 
 #### 1. Creating the database
 
-1. Start your MySQL/Mariadb server in a terminal: `mysql` or `mariadb`.
+1. Start your MySQL/MariaDB server in a terminal: `mysql` or `mariadb`.
 2. Create a new database `CREATE DATABASE lemans24;` (you can name it anything, but in this example I named it `lemans24`).
 
 #### 2. Importing data into the database

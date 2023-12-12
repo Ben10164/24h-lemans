@@ -8,7 +8,7 @@ st.set_page_config(
 utils.switch_page_button('Goto Home', 'Home')
 st.markdown(
     """## History
-*All images here will be in the public domain.*
+*If any images do not appear, please refresh the page. Some larger images take a bit longer to copy to the server so if you run this very quickly after deploying, the images may need another second to be processed. All images here will be in the public domain.*
 
 Established in 1923, the race has been a testing ground for automotive innovation and engineering prowess, pushing the boundaries of technology and performance. The event's unique format, with teams competing non-stop for 24 hours, has challenged both drivers and machines, making it a true test of endurance and skill. From the legendary events of 'Ford v Ferrari's to Ferrari's return to the top class after 50 years to win the centennial Le Mans in 2023, Le Mans has been one of the most punishing and rewarding race of all time.
     """
