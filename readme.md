@@ -25,7 +25,7 @@
 #### 2. Importing data into the database
 
 1. Use your newly created database: `USE lemans24;`.
-2. Run the 4 following scripts:
+2. Run the 4 following scripts in `data/`:
     * `SOURCE 0-results_in.sql`
     * `SOURCE 1-create_tables.sql`
     * `SOURCE 2-create_procedures.sql`

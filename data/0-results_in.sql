@@ -23,7 +23,7 @@ CREATE TABLE results_in (
     PRIMARY KEY (id)
 );
 -- Load data from CSV file into the 'results_in' table
-LOAD DATA LOCAL INFILE 'data/results_in.csv' INTO TABLE results_in FIELDS TERMINATED BY ';' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (
+LOAD DATA LOCAL INFILE 'results_in.csv' INTO TABLE results_in FIELDS TERMINATED BY ';' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (
     race_yr,
     pos,
     car_class,
