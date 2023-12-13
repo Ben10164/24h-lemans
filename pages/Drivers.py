@@ -20,7 +20,13 @@ conn = st.connection("mysql", type="sql")
 # ['id', 'driver_name', 'country', 'driver_id', 'race_id', 'car_number', 'driver_order', 'team_name', 'race_id', 'car_number', 'pos', 'laps', 'distance', 'racing_time', 'retirement_reason']
 query = """
 SELECT 
-    Result.race_id AS 'Race Year', Result.pos AS 'Result', Result.laps AS 'Laps Completed', Result.distance AS 'Distance Completed', Result.retirement_reason AS 'Retirement Reason', DriverResult.car_number
+    Result.race_id AS 'Race Year', 
+    Result.pos AS 'Result', 
+    Result.laps AS 'Laps Completed', 
+    Result.distance AS 'Distance Completed', 
+    Result.retirement_reason AS 'Retirement Reason', 
+    DriverResult.car_number AS 'Car Number',
+    TeamResult.team_name AS 'Team'
 FROM 
     Driver
 JOIN 
@@ -30,17 +36,31 @@ JOIN
         DriverResult.race_id = Result.race_id 
         AND DriverResult.car_number = Result.car_number
     )
+JOIN
+    TeamResult ON (
+        TeamResult.race_id = Result.race_id 
+        AND TeamResult.car_number = Result.car_number
+    )
 WHERE 
     Driver.driver_name= :name
 ORDER BY
     Result.race_id;
 """
 results = conn.query(query, params={"name": driver_name})
-results['Race Year'] = results["Race Year"].astype('str')
-results = results.set_index('Race Year')
+results["Race Year"] = results["Race Year"].astype("str")
+results = results.set_index("Race Year")
 # names['First Win'] = names['First Win'].astype('str') # theres a stupid comma in the year even though its datatype is YEAR(4)
 st.write("Drivers who have won at least once")
 st.dataframe(results, use_container_width=True)
+
+if st.toggle("View SQL statement"):
+    st.markdown(
+        f"""
+```sql
+{query}
+```
+"""
+    )
 
 st.markdown(
     """
