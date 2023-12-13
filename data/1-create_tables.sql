@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Race (
 -- CarClass table
 CREATE TABLE IF NOT EXISTS CarClass(
     id VARCHAR(50) NOT NULL,
-    class_desc VARCHAR(50),
+    class_desc VARCHAR(150),
     PRIMARY KEY (id)
 );
 
