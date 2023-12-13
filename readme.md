@@ -1,5 +1,9 @@
 # 24 Hours of Le Mans
 
+[![Deployment](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml)
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 ## How to run
 
 ### Docker
