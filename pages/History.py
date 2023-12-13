@@ -1,11 +1,12 @@
 import streamlit as st
 import utils
+
 st.set_page_config(
     page_title="24h of Le Mans Database History",
     page_icon="📖",
     initial_sidebar_state="collapsed",
 )
-utils.switch_page_button('Goto Home', 'Home')
+utils.switch_page_button("Goto Home", "Home")
 st.markdown(
     """## History
 *If any images do not appear, please refresh the page. Some larger images take a bit longer to copy to the server so if you run this very quickly after deploying, the images may need another second to be processed. All images here will be in the public domain.*
@@ -99,5 +100,7 @@ st.image(
     caption="Race winning car number Ferrari 499P - Hybrid during the 24 hours of Le Mans driven by Alessandro Pier Guidi, James Calado and Antonio Giovinazzi. I can't stress enough how incredible this race was. Picture taken by Wolkenjaeger~commonswiki.",
 )
 
-st.markdown("### \"The next golden era of motorsports racing\"")
-st.markdown("With BMW, Lamborghini, and Alpine joining the Hypercar class, only time will tell what the future of this historic race has in store for us.")
+st.markdown('### "The next golden era of motorsports racing"')
+st.markdown(
+    "With BMW, Lamborghini, and Alpine joining the Hypercar class, only time will tell what the future of this historic race has in store for us."
+)

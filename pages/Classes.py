@@ -37,7 +37,9 @@ WHERE
 """
 cars = conn.query(query)
 if not (selected_class == None):
-    desc = conn.query(f"select class_desc from CarClass WHERE id = '{selected_class}'")['class_desc'][0]
+    desc = conn.query(f"select class_desc from CarClass WHERE id = '{selected_class}'")[
+        "class_desc"
+    ][0]
     st.write(str(selected_class) + ": " + desc)
     selected_car = st.selectbox(
         "What car from this class would you like to see info on?",

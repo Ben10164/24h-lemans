@@ -1,4 +1,4 @@
-def switch_page_button(button_text:str, page_name: str):
+def switch_page_button(button_text: str, page_name: str):
     """
     Switch page programmatically in a multipage app
 
@@ -14,7 +14,6 @@ def switch_page_button(button_text:str, page_name: str):
 
     button = st.button(label=button_text)
 
-
     if button:
         page_name = standardize_name(page_name)
 
@@ -29,6 +28,10 @@ def switch_page_button(button_text:str, page_name: str):
                     )
                 )
 
-        page_names = [standardize_name(config["page_name"]) for config in pages.values()]
+        page_names = [
+            standardize_name(config["page_name"]) for config in pages.values()
+        ]
 
-        raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
+        raise ValueError(
+            f"Could not find page {page_name}. Must be one of {page_names}"
+        )

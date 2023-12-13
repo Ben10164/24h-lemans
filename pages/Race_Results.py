@@ -2,14 +2,14 @@ import streamlit as st
 import utils
 
 st.set_page_config(
-    page_title='24h of Le Mans Results',
+    page_title="24h of Le Mans Results",
     page_icon="🏁",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="collapsed",
 )
 
 st.markdown("## Results")
 
-utils.switch_page_button('Goto Home', 'Home')
+utils.switch_page_button("Goto Home", "Home")
 
 # Initialize connection.
 conn = st.connection("mysql", type="sql")
@@ -47,7 +47,7 @@ ORDER BY
 race_results = conn.query(query)
 # Print results.
 st.write("Results for the", race_year, "race.")
-st.dataframe(race_results.set_index("Result"), use_container_width= True)
+st.dataframe(race_results.set_index("Result"), use_container_width=True)
 
 if st.toggle("View SQL statement"):
     st.markdown(
@@ -60,7 +60,7 @@ if st.toggle("View SQL statement"):
 
 
 st.markdown(
-"""
+    """
 #### Term Glossary
 
 * DNF
