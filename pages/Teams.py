@@ -44,3 +44,12 @@ results = conn.query(query)
 results["Year"] = results["Year"].astype("str")
 results = results.set_index("Year")
 st.dataframe(results, use_container_width=True)
+
+if st.toggle("View SQL statement"):
+    st.markdown(
+        f"""
+```sql
+{query}
+```
+"""
+    )

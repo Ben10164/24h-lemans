@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS TeamResult;
-drop table if exists DriverResult;
+DROP TABLE IF EXISTS DriverResult;
 DROP TABLE IF EXISTS CarTyre;
 DROP TABLE IF EXISTS Tyre;
 DROP TABLE IF EXISTS Team;
-drop table if exists Result;
+DROP TABLE IF EXISTS Result;
 DROP TABLE IF EXISTS CarNumber;
 DROP TABLE IF EXISTS Car;
 DROP TABLE IF EXISTS CarClass;
