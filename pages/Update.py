@@ -39,7 +39,7 @@ if st.toggle("View Create table SQL statement"):
 
 with conn.connect() as connection:
     connection.execute(text(create_query))
-
+    connection.commit()
 team_list_query = """
 SELECT team_name 
 FROM Team;
@@ -55,36 +55,112 @@ team = st.selectbox(
 )
 
 if team is not None:
-    check_query = f"""
-    SELECT *
-    FROM 
-        ParentTeam
-    WHERE
-        child_name='{team}';
-    """
-
-    if st.toggle("View Check SQL statement"):
-        st.markdown(
-            f"""
-    ```sql
-    {check_query}
-    ```
-        """
-        )
-    parent = conn.query(check_query)["parent_name"].get(0)
+    check_query = f"SELECT * FROM ParentTeam WHERE child_name='{team}';"
+    res = conn.query(check_query)
+    parent = res["parent_name"].get(0)
 
     if parent is None:
         st.write(
             "It looks like this team is not affiliated with any parent team! If possible, it would be great if you could help by registering it!!"
         )
 
-        button = st.button("Submit SQL Code")
-        if button:
+        user_input_team = st.text_input(
+            "What is their parent company?",
+        )
+        insert_query = """
+-- ParentTeam(child_name, parent_name)
+-- This SQL statement uses functions that make SQL injections impossible.
+-- However, for markdown syntax highlighting purposes, they will appear
+-- as if they are affecting the statement.
+INSERT INTO 
+    ParentTeam (child_name, parent_name) 
+VALUES 
+    (:child_team, :parent_team)
+;
+"""
+        # statement = text(insert_query).bindparams(child_team=team, parent_team=user_input_team)
+        st.markdown(
+            f"""
+```sql
+{insert_query.replace(":child_team", "'"+team+"'").replace(":parent_team", "'"+user_input_team+"'")}
+```
+"""
+        )
+        if st.button("Submit SQL Code"):
             with conn.connect() as connection:
-                pass
+                connection.execute(
+                    text(insert_query).bindparams(
+                        child_team=team, parent_team=user_input_team
+                    )
+                )
+                connection.commit()
+                st.cache_data.clear()
+                st.rerun()
     else:
         st.write(team, "is registered to be a child team of", parent)
-
+        correct = st.selectbox(
+            "Is this correct? (To your knowledge)", options=["Yes", "No"], index=None, key='correct'
+        )
+        if correct == "Yes":
+            st.write("Yay! Thanks!")
+        elif correct == "No":
+            st.write("Uh oh, lets fix that.")
+            st.write(
+                "So we have two options here. We can update this to be accurate or we can delete this record and let someone else who does know add it in the future."
+            )
+            revise = st.selectbox(
+                "So we have two options here. We can update this to be accurate or we can delete this record and let someone else who does know add it in the future.",
+                options=["Update", "Delete"],
+                index=None,
+            )
+            if revise == "Update":
+                user_input_team = st.text_input(
+                    "What is their parent company?",
+                )
+                update_query = f"""
+-- ParentTeam(child_name, parent_name)
+-- This SQL statement uses functions that make SQL injections impossible.
+-- However, for markdown syntax highlighting purposes, they will appear
+-- as if they are affecting the statement.
+UPDATE ParentTeam
+    SET parent_name = :parent_team
+WHERE
+    child_name = '{team}'
+;
+"""
+                # statement = text(insert_query).bindparams(child_team=team, parent_team=user_input_team)
+                st.markdown(
+                    f"""
+```sql
+{update_query.replace(":parent_team", "'"+user_input_team+"'")}
+```
+"""
+                )
+                if st.button("Submit SQL Code"):
+                    with conn.connect() as connection:
+                        connection.execute(
+                            text(update_query).bindparams(
+                                parent_team=user_input_team
+                            )
+                        )
+                        connection.commit()
+                        st.session_state.clear()
+                        st.cache_data.clear()
+                        st.rerun()
+            elif revise == "Delete":
+                if st.button(
+                    "Press to confirm the deletion of "
+                    + team
+                    + "'s parent team relation."
+                ):
+                    query = f"""
+DELETE FROM ParentTeam WHERE child_name = '{team}';
+"""
+                    with conn.connect() as connection:
+                        connection.execute(text(query))
+                        connection.commit()
+                    st.cache_data.clear()
+                    st.rerun()
 
 
 # 2 sql sections
