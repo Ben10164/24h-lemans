@@ -4,6 +4,8 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+
+
 ## How to run
 
 ### Docker
@@ -29,12 +31,12 @@
 #### 2. Importing data into the database
 
 1. Use your newly created database: `USE lemans24;`.
-2. Run the 4 following scripts in `data/`:
+2. Run the 4 following scripts in `data/` (`cd data`):
     * `SOURCE 0-results_in.sql`
     * `SOURCE 1-create_tables.sql`
     * `SOURCE 2-create_procedures.sql`
     * `SOURCE 3-insert_data.sql`
-3. If everything works, you should have the output `Query OK, 59416 rows affected`.
+3. If everything works, you should have the output `Query OK, 59158 rows affected`.
 
 #### Run streamlit
 

@@ -6,7 +6,7 @@ FROM results_in;
 
 -- Populate the CarClass table (ill go back and add descriptions to these later)
 INSERT INTO CarClass(id)
-SELECT DISTINCT car_class
+SELECT DISTINCT car_class 
 FROM results_in;
 
 -- This took a very long time...

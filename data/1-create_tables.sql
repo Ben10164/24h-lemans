@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Tyre (
 CREATE TABLE IF NOT EXISTS CarTyre (
     car_id INT NOT NULL,
     tyre_id CHAR(2) NOT NULL,
-    PRIMARY KEY (car_id, tyre_id),
+    PRIMARY KEY (car_id),
     FOREIGN KEY (car_id) REFERENCES CarNumber(car_id),
     FOREIGN KEY (tyre_id) REFERENCES Tyre(id)
 );
