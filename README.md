@@ -1,10 +1,8 @@
 # 24 Hours of Le Mans
 
-[![Deployment](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml)
+[![Deployment](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Gonzaga-CPSC-321-Fall-2023/project-Ben10164/actions/workflows/deploy.yaml) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-[Youtube video](https://youtu.be/FLwmPf_rayo)
+[Presentation video](https://youtu.be/FLwmPf_rayo)
 
 (ER Diagrams are located in `docs/` as well as embedded at the bottom of this README.md)
 
