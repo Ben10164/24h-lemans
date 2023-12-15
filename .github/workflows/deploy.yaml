@@ -21,5 +21,5 @@ jobs:
           credentials: ${{secrets.GOOGLE_APP_ENGINE_KEY}}
           deliverables: app.yaml
       - name: Deployed Site
-        run: echo ${{steps.gae.outputs.url}} >> $GITHUB_OUTPUT"
+        run: echo ${{steps.gae.outputs.url}} >> $GITHUB_OUTPUT
     
