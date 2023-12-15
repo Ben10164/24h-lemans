@@ -9,8 +9,8 @@ st.set_page_config(
 
 st.markdown(
     """
-    ### Hello!
-    #### Welcome to my 24 Hours of Le Mans database application!"""
+    ### Hey!
+    #### Welcome to my 24 Hours of Le Mans Database application!"""
 )
 st.markdown(
     """

@@ -45,7 +45,7 @@ ORDER BY
     names["First Win"] = names["First Win"].astype(
         "str"
     )  # theres a stupid comma in the year even though its datatype is YEAR(4)
-    st.write("Teams who have won at least once.")
+    st.write("Drivers who have won at least once.")
     st.dataframe(names.set_index("Name"))
 with col2:
     query2 = """
