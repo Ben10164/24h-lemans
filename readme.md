@@ -4,7 +4,9 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+[Youtube video](https://youtu.be/FLwmPf_rayo)
 
+(ER Diagrams are located in `docs/` as well as embedded at the bottom of this README.md)
 
 ## How to run
 
@@ -57,3 +59,8 @@
     ```
 
 3. Run the streamlit app in the base repo directory: `streamlit run Home.py`.
+
+## ER Diagrams
+
+![Diagram 1](<docs/ER Diagram.png>)
+![Diagram 2](<docs/Another Diagram.png>)
