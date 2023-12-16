@@ -50,7 +50,7 @@ results = conn.query(query, params={"name": driver_name})
 results["Race Year"] = results["Race Year"].astype("str")
 results = results.set_index("Race Year")
 # names['First Win'] = names['First Win'].astype('str') # theres a stupid comma in the year even though its datatype is YEAR(4)
-st.write("Drivers who have won at least once")
+
 st.dataframe(results, use_container_width=True)
 
 if st.toggle("View SQL statement"):
