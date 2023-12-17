@@ -22,13 +22,3 @@ jobs:
           version: main
           credentials: ${{secrets.GOOGLE_APP_ENGINE_KEY}}
           deliverables: app.yaml
-  #     - name: Deployed Site
-  #       run: echo "${{steps.gae.outputs.url}}" >> "$GITHUB_OUTPUT"
-  # job2:
-  #   runs-on: ubuntu-latest
-  #   needs: deploy
-  #   steps:
-  #     - env:
-  #         OUTPUT1: ${{needs.deploy.outputs.output1}}
-  #         OUTPUT2: ${{needs.deploy.outputs.output2}}
-  #       run: echo "$OUTPUT1 $OUTPUT2"

@@ -2,8 +2,9 @@
 runtime: custom
 env: flex
 # entrypoint: streamlit run Home.py --server.enableCORS false --browser.serverAddress 0.0.0.0 --browser.gatherUsageStats false --server.port 8080
-manual_scaling:
-  instances: 1
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
 resources:
   cpu: 1
   memory_gb: 0.5
