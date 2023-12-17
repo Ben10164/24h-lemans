@@ -12,6 +12,7 @@
 
 * `docker build -t streamlit .`
 * `docker run -p 8080:8080 streamlit`
+* In a browser, navigate to `localhost:8080`
 * That should be it!
 
 ### Manual
