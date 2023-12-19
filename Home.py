@@ -2,7 +2,7 @@ import streamlit as st
 import utils
 
 st.set_page_config(
-    page_title="24h of Le Mans Database Home",
+    page_title="24h of Le Mans Database",
     page_icon="🏎️",
     initial_sidebar_state="collapsed",
 )
