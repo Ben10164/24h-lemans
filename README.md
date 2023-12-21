@@ -2,7 +2,7 @@
 
 [![Deployment](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-[Presentation video](https://youtu.be/FLwmPf_rayo)
+<!-- [Presentation video](https://youtu.be/FLwmPf_rayo) -->
 
 (ER Diagrams are located in `docs/` as well as embedded at the bottom of this README.md)
 
@@ -11,9 +11,10 @@
 ### Docker
 
 * `docker build -t streamlit .`
-* `docker run -p 8080:8080 streamlit`
-* In a browser, navigate to `localhost:8080`
+* `docker run -dp 8501:8501 streamlit`
+* In a browser, navigate to `localhost:8501`
 * That should be it!
+* *Also if you are unfamiliar with docker, to stop this process you run `docker stop xy` where `xy` is the output from the 3rd bullet point*
 
 ### Manual
 
@@ -37,7 +38,7 @@
     * `SOURCE 1-create_tables.sql`
     * `SOURCE 2-create_procedures.sql`
     * `SOURCE 3-insert_data.sql`
-3. If everything works, you should have the output `Query OK, 59158 rows affected`.
+3. If everything works, you should have the output `Query OK, X rows affected`.
 
 #### Run streamlit
 
