@@ -1,6 +1,7 @@
 # 24 Hours of Le Mans
 
-[![Deployment](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<!-- [![Deployment](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Ben10164/24h-lemans/actions/workflows/deploy.yaml) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) -->
 
 <!-- [Presentation video](https://youtu.be/FLwmPf_rayo) -->
 
