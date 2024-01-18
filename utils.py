@@ -1,3 +1,5 @@
+import streamlit as st
+@st.cache_data
 def switch_page_button(button_text: str, page_name: str):
     """
     Switch page programmatically in a multipage app
