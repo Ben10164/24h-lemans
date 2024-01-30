@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🏎️",
     initial_sidebar_state="collapsed",
 )
-@st.cache_data(experimental_allow_widgets=True)
+# @st.cache_data(experimental_allow_widgets=True)
 def home():
     st.markdown(
         """
